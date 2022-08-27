@@ -1,0 +1,84 @@
+/*
+<selector> {
+    <propiedad>: <valor>;
+    <propiedad>: <valor>;
+    <propiedad>: <valor>;
+    <propiedad>: <valor>;
+}
+*/
+a {
+    color: brown;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a.segundo-nivel {
+    font-size: medium;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: yellow;
+}
+
+p {
+    color: beige;
+}
+
+li {
+    color: beige;
+}
+
+#equipo {
+    color:tomato;
+}
+
+#intro {
+    text-decoration: line-through;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    color: blueviolet;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+a:active {
+    color: red;
+}
+
+/* 
+  rgb -> red green blue
+
+  #000
+  #000000
+  rgb(0, 0, 0)
+
+  hsl(0, 0, 0)
+
+*/
+a.boton:link {
+    background-color: rgba(0, 0, 0, .1);
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+a.boton:hover {
+    background-color: red;
+    
+}
+

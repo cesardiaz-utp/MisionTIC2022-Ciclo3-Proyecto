@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="stylesheet" href="estilos/general.css">
+    <link rel="stylesheet" href="estilos/index.css">
 </head>
 
 <body>
@@ -13,12 +15,12 @@
 
     <h2>Tabla de Contenido</h2>
     <ul>
-        <li><a href="#intro">Introducción</a></li>
+        <li><a href="#intro" >Introducción</a></li>
         <li><a href="#mark">Marco Teórico</a></li>
-        <li><a href="#goal">Objetivos</a>
+        <li class="goal-menu"><a href="#goal">Objetivos</a>
             <ol>
-                <li><a href="#general">General</a></li>
-                <li><a href="#specifics">Especificos</a></li>
+                <li><a href="#general" class="segundo-nivel">General</a></li>
+                <li><a href="#specifics" class="segundo-nivel">Especificos</a></li>
             </ol>
         </li>
         <li><a href="#procedure">Procedimiento realizado</a></li>
@@ -28,8 +30,14 @@
         <li><a href="https://www.utp.edu.co/" target="_blank">Ir a la pagina de la UTP</a></li>
     </ul>
 
-    <h2><a id="intro"></a>Introducción</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt accusantium a autem maxime laborum odit nobis
+    <a href="http://google.com.co/" target="_blank" class="boton">Este es un boton</a>
+
+    <h2 id="intro">Introducción</h2>
+
+    <img src="imagenes/equipo-trabajo.jpg" 
+         alt="Foto del Equipo de trabajo"
+         title="Equipo de trabajo">
+    <p id="equipo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt accusantium a autem maxime laborum odit nobis
         distinctio alias. Officiis itaque ratione culpa tempora blanditiis velit voluptatem quasi a, nam est.</p>
 
     <h2><a id="mark"></a>Marco teorico</h2>
@@ -49,7 +57,8 @@
 
     <h3><a id="specifics"></a>Objetivos especificos</h3>
     <ul>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum autem soluta ipsam voluptatibus ab fugiat
+        <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum autem soluta ipsam voluptatibus ab fugiat
             fugit veniam nam perferendis magni illo quidem, consequuntur, optio nobis velit quam eligendi quas nemo?
         </li>
         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad provident animi fuga omnis sapiente, tempore,
@@ -62,9 +71,16 @@
 
     <h2><a id="procedure"></a>Procedimiento realizado</h2>
     <ol>
-        <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sed incidunt earum facilis modi ullam
+        <li>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi sed incidunt earum facilis modi ullam
             dolores obcaecati deserunt rem cupiditate fugiat facere porro, velit ipsam quidem quisquam sapiente eaque
-            amet.</li>
+            amet.<br>
+            <img src="https://www.javeriana.edu.co/pesquisa/wp-content/uploads/2021/07/nuevo-laboratorio-de-la-javeriana.jpg"
+            alt="Laboratorio"><br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non iste eum consequatur commodi suscipit!
+            Voluptatem ipsam, ipsum necessitatibus earum pariatur saepe voluptatibus? Ullam corporis adipisci distinctio
+            omnis suscipit facere vitae!.
+        </li>
         <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam magnam enim praesentium similique!
             Cupiditate earum tempore ratione doloremque qui ullam assumenda quos quam. In quaerat dolor necessitatibus.
             Natus, delectus esse.</li>
@@ -75,6 +91,56 @@
             suscipit nisi voluptas iste earum deserunt placeat tempore rerum itaque consectetur accusamus enim ab
             aperiam.</li>
     </ol>
+
+    <h3>Datos recolectados</h3>
+    <table>
+        <tr>
+            <th colspan="2">Datos de Referencia</th>
+            <th rowspan="2">Valor</th>
+        </tr>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Virus</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Bacterias</td>
+            <td>125.5</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Globulos blancos</td>
+            <td>78.3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Globulos rojos</td>
+            <td>126.73</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>RH</td>
+            <td>O +</td>
+        </tr>
+        <tr>
+            <td rowspan="3">6</td>
+            <td>Colesterol bueno</td>
+            <td>125.4</td>
+        </tr>
+        <tr>
+            <td>Colesterol malo</td>
+            <td>95</td>
+        </tr>
+        <tr>
+            <td>Colesterol total</td>
+            <td>220.4</td>
+        </tr>
+    </table>
 
     <h2><a id="resume"></a>Conclusiones</h2>
     <ul>
@@ -89,11 +155,16 @@
             voluptas voluptatum natus!</li>
     </ul>
 
-    <h2 id="biblio">Bibliografía</h2>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore enim at veritatis nostrum. Eveniet nemo ipsum
-    nostrum molestiae quam voluptas, numquam libero exercitationem enim accusantium corporis odio explicabo impedit
-    saepe.
+    <h3>Video resumen</h3>
+    <video controls autoplay muted loop>
+        <source src="videos/resumen.mp4" type="video/mp4">
+        Su navegador no soporta la etiqueta video
+    </video>
 
+    <h2 id="biblio">Bibliografía</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore enim at veritatis nostrum. Eveniet nemo ipsum
+    nostrum molestiae quam voluptas, numquam libero exercitationem enim accusantium corporis odio explicabo impedit
+    saepe.</p>
 
 </body>
 
