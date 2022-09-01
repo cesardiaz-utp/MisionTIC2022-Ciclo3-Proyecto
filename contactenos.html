@@ -1,29 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactenos</title>
 </head>
+
 <body>
 
-    <form>
-        <label>Nombre de usuario</label>
-        <input id="nombre" type="text" placeholder="Nombre" >
+    <form method="get" action="/api/registro">
+        <label for="username">Nombre de usuario</label>
+        <input id="username" type="text" name="login" placeholder="Nombre" required aria-required="true">
+        
         <label>Contraseña</label>
-        <input type="password" placeholder="Contraseña">
-
-        <input type="number" placeholder="Edad" >
-        <input type="email" >
-        <input type="color" >
+        <input type="password" name="pass" placeholder="Contraseña" required>
+        
+        <label>Edad</label>
+        <input type="number" name="age" placeholder="Edad" required>
+        <label>Correo electrónico</label>
+        <input type="email" name="email">
+        <label>Color</label>
+        <input type="color" name="color">
+        <label></label>
         <input type="range" min="0" max="100">
-        <input type="date" >
-        <input type="time" >
-        <input type="radio">
-        <input type="checkbox"  >
-        <input type="button" value="Es un boton">
+        <label>Fecha nacimiento</label>
+        <input type="date">
+        <label>Hora de nacimiento</label>
+        <input type="time">
+        <label>Genero</label>
+        <span>
+            <input id="male" name="genre" type="radio" value="M" checked>
+            <label for="male">Masculino</label>
+
+            <input id="female"  name="genre" type="radio" value="F">
+            <label for="female">Femenino</label>
+
+            <input id="none" type="radio" name="genre" value="I">
+            <label for="none">Indeterminado</label>
+        </span>
+        <label>Hobbie</label>
+        <span>
+            <input id="basketball" name="hobbie" type="checkbox" value="bb">
+            <label for="basketball">Baloncesto</label>
+
+            <input type="checkbox" name="hobbie" value="vb">
+            <label>Voleyball</label>
+
+            <input type="checkbox" name="hobbie" value="fb">
+            <label>Futbol</label>
+
+            <input type="checkbox" name="hobbie" value="tn">
+            <label>Tenis</label>
+        </span>
+        <label for="logros">Logros</label>
+        <textarea id="logros"></textarea>
+        <label>Especialidad</label>
+        <select>
+            <option>Ingeniería de Sistemas</option>
+            <option>Ingeniería Electrica</option>
+            <option>Ingeniería Mecánica</option>
+            <option>Administración de Empresas</option>
+            <option selected>Contaduría</option>
+        </select>
+
+        <label>Otras carreras que le gustan </label>
+        <input list="afines">
+        <datalist id="afines">
+            <option>Ingeniería de Sistemas</option>
+            <option>Ingeniería Electrica</option>
+            <option>Ingeniería Mecánica</option>
+            <option>Administración de Empresas</option>
+            <option>Contaduría</option>
+        </datalist>
+
+        <input type="search">
+
+        <input type="file">
+
+        <input type="hidden">
+
+        <hr>
+        <input type="button" value="Es un boton" ondblclick="mostrarMensaje('Doble click en input button')">
+        <input type="reset" value="Otro limpiar">
+        <input type="submit" value="Otro enviar">
+
+        <button type="button" onclick="mostrarMensaje('Click en boton accionar')">Accionar</button>
+        <button type="reset">Limpiar</button>
+        <button type="submit">Enviar</button>
     </form>
-    
+
+    <form>
+        <label for="contador">Contador</label>
+        <input id="contador" type="number" value="50">
+        <button type="button" onclick="incrementarContador()">Incrementar</button>
+        <p id="salida"></p>
+    </form>
+
+
+    <script src="js/contactenos.js"></script>
 </body>
+
 </html>
