@@ -1,0 +1,65 @@
+.header {
+    background-color: #ede6ff;
+    width: 100%;
+}
+
+.logos {
+    height: 50px;
+}
+
+.fullname {
+    float: right;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: blue;
+}
+
+.avatar {
+    float: right;
+    height: 50px;
+    border-radius: 25px;
+}
+
+#central {
+    width: 70%;
+    float: left;
+}
+
+#lateral {
+    float: right;
+    width: 29%;
+}
+
+#barra1 {
+    margin-top: 20px;
+    text-align: end;
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+
+a.btn:link, a.btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: firebrick;
+    color: white;
+    margin: 10px;
+    padding: 10px 40px;
+    border-radius: 5px;
+}
+
+a.btn:hover, a.btn:active {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    margin: 10px;
+    padding: 10px 40px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px black;
+    transform: translate(-5, -5);
+}
