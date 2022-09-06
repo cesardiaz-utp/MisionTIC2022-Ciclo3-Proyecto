@@ -3,3 +3,7 @@
     font-weight: bold;
     float: right;
 }
+
+main .row{
+    margin-top: 1rem;
+}

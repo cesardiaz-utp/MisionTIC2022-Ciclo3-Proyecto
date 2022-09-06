@@ -15,7 +15,7 @@ const abrirCalculadora = () => {
     body += "<div class='col'><input name='num2' type='number' class='form-control' placeholder='Numero 2' required></div>";
     body += "</div>";
     body += "<div class='row'>";
-    body += "<button type='button' class='btn btn-primary' onclick='realizarOperacion()'>Calcular</button>";
+    body += "<button type='button' class='btn btn-primary col' onclick='realizarOperacion()'>Calcular</button>";
 
     body += "</div>";
     body += "<div id='resultado' class='row' ></div>";
