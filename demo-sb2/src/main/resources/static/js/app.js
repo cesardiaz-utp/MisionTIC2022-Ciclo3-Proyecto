@@ -54,9 +54,7 @@ const realizarOperacion = () => {
         return;
     }
 
-    let resultado = ejecutarOperacionRemoto(num1, op, num2, tagResultado);
-
-    tagResultado.innerText = resultado;
+    ejecutarOperacionRemoto(num1, op, num2, tagResultado);
 }
 
 const alertTrigger = document.getElementById('liveAlertBtn')
@@ -66,7 +64,7 @@ if (alertTrigger) {
     })
 }
 
-const ejecutarOperacionRemoto = async (num1, op, num2, tagResultado) => {
+const ejecutarOperacionRemoto = (num1, op, num2, tagResultado) => {
     op = op == '+' ? '%2B' : op;
     op = op == '%' ? '%25' : op;
     const url = `api/calculator?num2=${num2}&op=${op}&num1=${num1}`;
