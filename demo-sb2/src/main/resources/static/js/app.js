@@ -71,15 +71,11 @@ const ejecutarOperacionRemoto = async (num1, op, num2, tagResultado) => {
     op = op == '%' ? '%25' : op;
     const url = `api/calculator?num2=${num2}&op=${op}&num1=${num1}`;
 
-    let response = await fetch(url);
-
-    if (response.ok) {
-      let respuesta = await response.text();
-      tagResultado.innerHTML = respuesta; 
-    } else {
-      alert("HTTP-Error: " + response.status);
-    }
-
+    fetch(url)
+        .then(response => response.text())
+        .then(respuesta => {
+            tagResultado.innerHTML = respuesta;
+        });
 }
 
 const ejecutarOperacionLocal = (num1, op, num2, tagResultado) => {
