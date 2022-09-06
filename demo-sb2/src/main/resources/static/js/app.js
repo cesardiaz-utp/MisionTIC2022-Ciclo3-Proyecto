@@ -54,7 +54,7 @@ const realizarOperacion = () => {
         return;
     }
 
-    ejecutarOperacionRemoto(num1, op, num2, tagResultado);
+    ejecutarOperacionRemotoPost(num1, op, num2, tagResultado);
 }
 
 const alertTrigger = document.getElementById('liveAlertBtn')
@@ -64,7 +64,7 @@ if (alertTrigger) {
     })
 }
 
-const ejecutarOperacionRemoto = (num1, op, num2, tagResultado) => {
+const ejecutarOperacionRemotoGet = (num1, op, num2, tagResultado) => {
     op = op == '+' ? '%2B' : op;
     op = op == '%' ? '%25' : op;
     const url = `api/calculator?num2=${num2}&op=${op}&num1=${num1}`;
@@ -75,6 +75,28 @@ const ejecutarOperacionRemoto = (num1, op, num2, tagResultado) => {
             tagResultado.innerHTML = respuesta;
         });
 }
+
+const ejecutarOperacionRemotoPost = async (num1, op, num2, tagResultado) => {
+    const url = 'api/calculator';
+    
+    const request = {
+        "num1": num1,
+        "op": op,
+        "num2": num2 
+    };
+
+    let response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(request)
+      });
+
+      let result = await response.json();
+      tagResultado.innerHTML = result.resultado;
+}
+
 
 const ejecutarOperacionLocal = (num1, op, num2, tagResultado) => {
     console.log(num1, op, num2);
