@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pagina de saludo</h1>
+        <form method="get" action="api/saludo">
+            <div class="row">
+                <label for="name" class="col">Nombre</label>
+                <input id="name" class="col" name="name" placeholder="Ingrese su nombre" required>
+            </div>
+            <div class="row">
+                <button class="col btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -2,3 +2,11 @@
     background-color: red;
     font-weight: bold;
 }
+
+
+#fila div {
+    border-style:inset;
+    border-width: 1px;
+    border-color: black;
+    text-align: center;
+}

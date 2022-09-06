@@ -82,3 +82,22 @@ a.boton:hover {
     
 }
 
+@media screen and (min-width: 800px) {
+    h1 {
+        color: red;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 799px) {
+    h1 {
+        color: blue;
+    }
+
+    img {
+        width: 30%;
+    }
+}
