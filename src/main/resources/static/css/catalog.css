@@ -30,4 +30,12 @@
     max-height: 100vh;
     overflow-x: auto;
     overflow-y: hidden;
-  }
+}
+
+#results {
+    width: 100%;
+}
+
+.movie {
+    height: 100%;
+}

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html class="h-100" lang="en">
+<html class="h-100" lang="en" xmlns:th="http://www.thymeleaf.org/">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVS Catalog</title>
-    <link rel="shortcut icon" href="images/CVS-Logo.png" type="image/png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/template.css">
-    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="shortcut icon" href="/images/CVS-Logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/template.css">
+    <link rel="stylesheet" href="/css/catalog.css">
 </head>
 
 <body class="d-flex h-100 text-center text-white bg-dark">
@@ -81,15 +81,15 @@
                     Cesar's Video Shop
                 </h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link active" aria-current="page" href="catalog.html">Catalog</a>
-                    <a class="nav-link" href="contact.html">Contact</a>
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/catalog">Catalog</a>
+                    <a class="nav-link" href="/contact">Contact</a>
+                    <a class="nav-link" href="/login">Login</a>
                 </nav>
             </div>
         </header>
         <main>
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div th:if="false" id="myCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -152,8 +152,8 @@
                 </button>
             </div>
             <div id="data">
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-                    <a href="/"
+                <div class="categories d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+                    <a href="#"
                         class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <svg class="bi me-2" width="40" height="32">
                             <use xlink:href="#bootstrap" />
@@ -162,90 +162,57 @@
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active" aria-current="page">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#home" />
-                                </svg>
-                                Action
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#speedometer2" />
-                                </svg>
-                                Comedy
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#table" />
-                                </svg>
-                                Romance
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#grid" />
-                                </svg>
-                                Sci-Fi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link text-white">
-                                <svg class="bi me-2" width="16" height="16">
-                                    <use xlink:href="#people-circle" />
-                                </svg>
-                                Terror
+                        <li th:each="cat: ${categories}" class="nav-item">
+                            <a th:href="@{/catalog/{id}(id=${cat.id})}"
+                                th:class="'nav-link '+${cat.id == id ? 'active' : ''}" aria-current="page">
+                                <span th:text="${cat.name}">Action</span>
                             </a>
                         </li>
                     </ul>
                 </div>
-
-                <div class="d-flex flex-column flex-shrink-0 p-3 album py-5 ">
-                    <div class="container">
-
-                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                            <!-- Cada video -->
-                            <div class="col">
-                                <div class="card shadow-sm">
-                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                        xmlns="http://www.w3.org/2000/svg" role="img"
-                                        aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                                        focusable="false">
-                                        <title>Placeholder</title>
-                                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                            fill="#eceeef" dy=".3em">Thumbnail</text>
-                                    </svg>
-
-                                    <div class="card-body text-dark">
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural
-                                            lead-in to additional content. This content is a little bit longer.</p>
+                <div id="results">
+                    <h1 th:text="${title}">Hola</h1>
+                    <div class="d-flex flex-column flex-shrink-0 p-3 album">
+                        <div class="container">
+                            <div th:if="${id == null}">
+                                <p>Please select a category to see videos</p>
+                            </div>
+                            <div th:if="${id != null}"
+                                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-3 g-3">
+                                <div th:if="${movies.isEmpty()}">
+                                    <p>No videos in this category</p>
+                                </div>
+                                <div th:if="${!movies.isEmpty()}" th:each="movie: ${movies}" class="col">
+                                    <!-- Cada video -->
+                                    <div class="movie card shadow-sm bg-white">
+                                        <img th:src="${movie.imageUrl != null ? movie.imageUrl : '/images/noimage.jpg' }"
+                                            class="card-img-top" alt="${movie.name}">
+                                        <div class="card-body text-dark">
+                                            <h5 th:text="${movie.name}" class="card-title">Card title</h5>
+                                            <p th:text="${movie.description}" class="card-text">Some quick example text
+                                                to build on the card title and make up the bulk of the card's content.
+                                            </p>
+                                        </div>
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button"
-                                                    class="btn btn-sm btn-outline-secondary">Detail</button>
+                                            <div class="btn-group m-2">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
                                                 <button type="button"
                                                     class="btn btn-sm btn-outline-secondary">Cart</button>
                                             </div>
-                                            <small class="text-muted">120 mins</small>
+                                            <small class="text-muted m-2">
+                                                <span th:text="${movie.length}">120</span> mins
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </main>
         <footer class="mt-auto text-white-50">
-            <p>Developed by <a href="mailto:black@utp.edu.co">Cesar Diaz</a>. &copy; 2022 </p>                    
+            <p>Developed by <a href="mailto:black@utp.edu.co">Cesar Diaz</a>. &copy; 2022 </p>
         </footer>
     </div>
     <script src="js/bootstrap.min.js"></script>
