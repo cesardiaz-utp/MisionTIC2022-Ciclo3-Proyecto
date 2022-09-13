@@ -28,7 +28,7 @@ public class VideoShopController {
     private final List<MovieDto> movies = Arrays.asList(
             new MovieDto(1, "The Matrix", 4,
                     "Cuando una bella desconocida lleva al hacker Neo a un inframundo prohibido, descubre la impactante verdad: la vida que conoce es un elaborado engaño de una ciberinteligencia malvada.",
-                    120, null),
+                    120, "https://cdn.pocket-lint.com/r/s/1200x630/assets/images/155659-tv-news-feature-what-is-the-best-order-to-watch-the-matrix-movies-image6-n4msmyjaxw.jpg"),
             new MovieDto(2, "Dumb and Dumber", 2, "Esta pelicula trata de ..", 90, null),
             new MovieDto(2, "Dumb and Dumber", 2,
                     "Cuando una bella desconocida lleva al hacker Neo a un inframundo prohibido, descubre la impactante verdad: la vida que conoce es un elaborado engaño de una ciberinteligencia malvada.",
