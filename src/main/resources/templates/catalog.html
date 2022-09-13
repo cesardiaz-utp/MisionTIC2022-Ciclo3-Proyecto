@@ -170,7 +170,12 @@
                         </li>
                     </ul>
                 </div>
-                <div id="results">
+                <div id="error" th:if="${error != null}" >
+                    <div th:text="${error}" class="alert alert-warning text-dark" role="alert">
+                        Error
+                    </div>
+                </div>
+                <div id="results" th:if="${error == null}">
                     <h1 th:text="${title}">Hola</h1>
                     <div class="d-flex flex-column flex-shrink-0 p-3 album">
                         <div class="container">

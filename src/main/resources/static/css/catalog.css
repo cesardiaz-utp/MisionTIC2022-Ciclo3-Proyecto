@@ -32,7 +32,8 @@
     overflow-y: hidden;
 }
 
-#results {
+#results,
+#error {
     width: 100%;
 }
 
