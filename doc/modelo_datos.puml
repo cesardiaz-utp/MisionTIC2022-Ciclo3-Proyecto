@@ -1,4 +1,4 @@
-@startuml
+@startuml "Cesar's Video Shop"
 
 class Category {
     - String name
