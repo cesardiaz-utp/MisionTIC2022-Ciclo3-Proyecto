@@ -6,19 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.CatalogService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 // Spring MVC
 
+@AllArgsConstructor
 @Controller
 @Slf4j
 public class VideoShopController {
 
     private CatalogService catalogService;
-
-    public VideoShopController(CatalogService catalogService) {
-        this.catalogService = catalogService;
-    }
 
     @GetMapping("/catalog")
     public String goToCatalog(Model model) {

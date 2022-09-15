@@ -1,0 +1,30 @@
+@startuml
+
+class Category {
+    - String name
+    + void setName(String name)
+    + String getName()
+}
+
+class Movie {
+    - Long code
+    - String name
+    - String description
+    - Integer length
+    - String imageUrl
+    + set()
+    + get()
+}
+
+class User {
+    - String username
+    - String password
+    - String name
+    - String email
+    - Boolean active
+    + set()
+    + get()
+}
+
+Category "1" o-- "*" Movie
+@enduml
