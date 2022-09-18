@@ -102,14 +102,27 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public void updateUser(UserRequest user) {
-        // TODO Auto-generated method stub
+        var userOp = userRepository.findById(user.getUsername());
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
 
+        var userDb = userOp.get();
+        userDb.setUsername(user.getUsername());
+        userDb.setName(user.getName());
+        userDb.setEmail(user.getEmail());
+        userDb.setAdmin(user.getAdmin());
+        userDb = userRepository.save(userDb);
     }
 
     @Override
     public void deleteUser(String username) {
-        // TODO Auto-generated method stub
+        var userOp = userRepository.findById(username);
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
 
+        userRepository.delete(userOp.get());
     }
 
     @Override

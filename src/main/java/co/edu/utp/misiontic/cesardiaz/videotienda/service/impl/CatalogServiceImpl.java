@@ -1,6 +1,5 @@
 package co.edu.utp.misiontic.cesardiaz.videotienda.service.impl;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -58,11 +57,12 @@ public class CatalogServiceImpl implements CatalogService {
 
         var categoryMovies = movies.stream()
                 .map(mov -> MovieDto.builder()
-                        .id(mov.getCode().intValue())
+                        .id(mov.getCode())
                         .length(mov.getLength())
                         .name(mov.getName())
                         .description(mov.getDescription())
                         .imageUrl(mov.getImageUrl())
+                        .price(mov.getValue())
                         .build())
                 .collect(Collectors.toList());
 
