@@ -34,9 +34,9 @@ public class VideotiendaApplication {
 
 		@Override
 		public void run(String... args) throws Exception {
-			loadUsers();
-			loadCategories();
-			loadMovies1();
+			// loadUsers();
+			// loadCategories();
+			// loadMovies1();
 		}
 
 		private void loadUsers() {
