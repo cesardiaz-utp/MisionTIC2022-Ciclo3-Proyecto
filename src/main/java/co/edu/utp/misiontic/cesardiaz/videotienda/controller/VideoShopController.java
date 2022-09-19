@@ -62,4 +62,9 @@ public class VideoShopController {
     public String goToLogin(Model model) {
         return "login";
     }
+
+    @GetMapping("/cart")
+    public String goToCart(Model model) {
+        return "cart";
+    }
 }

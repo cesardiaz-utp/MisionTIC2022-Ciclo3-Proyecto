@@ -85,6 +85,13 @@
                     <a class="nav-link active" aria-current="page" href="/catalog">Catalog</a>
                     <a class="nav-link" href="/contact">Contact</a>
                     <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link position-relative" href="/cart">
+                        Cart
+                        <span class="badge rounded-pill bg-danger">
+                            <span id="cart-count">0</span>
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
                 </nav>
             </div>
         </header>
@@ -170,7 +177,7 @@
                         </li>
                     </ul>
                 </div>
-                <div id="error" th:if="${error != null}" >
+                <div id="error" th:if="${error != null}">
                     <div th:text="${error}" class="alert alert-warning text-dark" role="alert">
                         Error
                     </div>
@@ -182,8 +189,7 @@
                             <div th:if="${id == null}">
                                 <p>Please select a category to see videos</p>
                             </div>
-                            <div th:if="${id != null}"
-                                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-3 g-3">
+                            <div th:if="${id != null}" class="row row-cols-md-1 row-cols-lg-2 row-cols-xl-3 g-3">
                                 <div th:if="${movies.isEmpty()}">
                                     <p>No videos in this category</p>
                                 </div>
@@ -197,11 +203,16 @@
                                             <p th:text="${movie.description}" class="card-text">Some quick example text
                                                 to build on the card title and make up the bulk of the card's content.
                                             </p>
+                                            <p><b>Price</b>: $
+                                                <span
+                                                    th:text="${#numbers.formatDecimal(movie.price,3,'POINT',2,'COMMA')}">0</span>
+                                            </p>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group m-2">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
-                                                <button type="button"
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button>
+                                                <button type="button" th:onclick="addToCart([[${movie.id}]]);"
                                                     class="btn btn-sm btn-outline-secondary">Cart</button>
                                             </div>
                                             <small class="text-muted m-2">
@@ -220,7 +231,46 @@
             <p>Developed by <a href="mailto:black@utp.edu.co">Cesar Diaz</a>. &copy; 2022 </p>
         </footer>
     </div>
-    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Detail Modal -->
+    <div class="modal fade text-start" id="detailModal" tabindex="-1" aria-labelledby="detailLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailLabel">Modal title</h5>
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2 id="detail-title">Movie title</h2>
+                    <p>
+                        <span id="detail-year">2022</span> - <span id="detail-rating">PG-13</span> - <span
+                            id="detail-duration|">2h 5m</span>
+                    </p>
+                    <div>
+                        <img src="/src/main/resources/static/images/noimage.jpg" alt="Movie image">
+                    </div>
+                    <div>
+                        <video width="320" height="240" controls>
+                            <source id="detaill-video" src="movie.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div id="detail-categories">
+                        <span class="rounded-pill">Drama</span> - <span class="rounded-pill">Triller</span>
+                    </div>
+                    <p id="detail-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga quam,
+                        cumque rem eum exercitationem doloremque recusandae repudiandae nisi doloribus et quod culpa
+                        officia in accusamus odit quae sed alias accusantium.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/cart.js"></script>
 </body>
 
 </html>
