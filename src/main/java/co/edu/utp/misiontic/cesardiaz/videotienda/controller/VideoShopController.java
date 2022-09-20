@@ -18,6 +18,11 @@ public class VideoShopController {
 
     private CatalogService catalogService;
 
+    @GetMapping(value = { "/", "/index", "/index.html" })
+    public String goToIndex(Model model) {
+        return "index";
+    }
+
     @GetMapping("/catalog")
     public String goToCatalog(Model model) {
         var categories = this.catalogService.getCategories();

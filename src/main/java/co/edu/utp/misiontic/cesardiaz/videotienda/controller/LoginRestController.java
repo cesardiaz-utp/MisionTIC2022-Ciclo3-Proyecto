@@ -35,4 +35,9 @@ public class LoginRestController {
         }
     }
 
+    @PostMapping("/fake")
+    public  ResponseEntity<?> fakeLogin() {
+        return ResponseEntity.badRequest().build();
+    }
+
 }
