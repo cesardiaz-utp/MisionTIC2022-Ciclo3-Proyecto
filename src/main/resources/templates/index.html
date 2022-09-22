@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-100 text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div th:insert="layout/header :: header">...</div>
+        <div th:replace="layout/header :: header">...</div>
 
-        <main class="px-3">
+        <main class="mt-auto text-center px-3">
             <div class="mb-4 p-3">
                 <svg height="110" width="250">
                     <defs id="SvgjsDefs1001"></defs>
@@ -96,10 +96,11 @@
             </p>
         </main>
 
-        <div th:insert="layout/footer :: footer">...</div>
+        <p id="padre-contador" style="display: none;"> Hay <span id="contador">0</span> visitas</p>
+        <script src="/js/app.js"></script>
+        <div th:replace="layout/footer :: footer">...</div>
     </div>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
 </body>
 
 </html>

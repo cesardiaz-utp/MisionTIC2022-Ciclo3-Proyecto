@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <header class="mb-auto" th:fragment="header">
+    <header th:fragment="header">
         <div>
             <h3 class="float-md-start mb-0">
                 <svg class="logo mb-1" viewBox="0 0 70 70.01724265514588">
@@ -75,32 +75,43 @@
                 </svg>
                 Cesar's Video Shop
             </h3>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <nav class="nav nav-masthead navbar navbar-expand-lg justify-content-center float-md-end">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" th:classappend="${page == 'home' ? 'active' : ''}"
+                                th:attr="aria-current=${page == 'home' ? 'page' : ''}" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/catalog">Catalog</a>
+                            <a class="nav-link" th:classappend="${page == 'catalog' ? 'active' : ''}"
+                                th:attr="aria-current=${page == 'catalog' ? 'page' : ''}" href="/catalog">Catalog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <a class="nav-link" th:classappend="${page == 'contact' ? 'active' : ''}"
+                                th:attr="aria-current=${page == 'contact' ? 'page' : ''}" href="/contact">Contact</a>
                         </li>
                         <li id="login-link" class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
                         <li id="logout-link" class="nav-item dropdown">
-                            <a id="user-fullname" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Admin
+                            <a id="user-fullname" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Users</a></li>
                                 <li><a class="dropdown-item" href="#">Movies</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li><a class="dropdown-item" href="#">Logout</a></li>
                             </ul>
-                          </li>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link position-relative" href="/cart">
                                 Cart

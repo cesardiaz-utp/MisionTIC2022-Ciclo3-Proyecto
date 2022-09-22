@@ -3,7 +3,7 @@ const loadUserConfig = () => {
     const logoutLi = document.getElementById("logout-link");
 
     const user = localStorage.getItem("loggedUser");
-    if(user == undefined) {
+    if (user == undefined) {
         loginLi.style.display = 'block';
         logoutLi.style.display = 'none';
     } else {
@@ -16,3 +16,29 @@ const loadUserConfig = () => {
 };
 
 loadUserConfig();
+
+const contadorVisitas = async () => {
+    // let response = await fetch("/api/contador", {
+    //     method: 'POST'
+    // });
+
+
+    // if (response.ok) {
+    //     let value = await response.text();
+    //     console.log('Contador', value);
+
+    //     document.getElementById("contador").innerText = value;
+    //     document.getElementById("padre-contador").style.display = 'block'; 
+    // } else {
+    //     console.log('error');
+    // }
+
+    fetch("/api/contador", { method: 'POST' })
+        .then(response => response.text())
+        .then(value => {
+            document.getElementById("contador").innerText = value;
+            document.getElementById("padre-contador").style.display = 'block'; 
+        });
+}
+
+contadorVisitas();

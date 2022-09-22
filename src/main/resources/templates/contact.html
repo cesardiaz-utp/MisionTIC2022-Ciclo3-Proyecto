@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="/css/contact.css">
 </head>
 
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-100 text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div th:insert="layout/header :: header">...</div>
+        <div class="mb-auto" th:replace="layout/header :: header">...</div>
 
-        <main class="container mb-auto">
+        <main class="container mt-auto">
             <div class="row">
                 <!-- Section Titile -->
                 <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
-                    <h1 class="section-title">Love to Hear From You</h1>
+                    <h1 class="section-title text-center">Love to Hear From You</h1>
                 </div>
             </div>
             <div class="row">
@@ -47,32 +47,36 @@
                         Program: <a href="#">Mon to Sat: 09:30 AM - 10.30 PM</a>
                     </div>
                 </div>
+
+
                 <!-- contact form -->
                 <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
-                    <form class="shake" role="form" method="post" id="contactForm" name="contact-form"
-                        data-toggle="validator">
+                    <form method="get" action="/contact/register" class="shake" role="form" id="contactForm"
+                        name="contact-form" data-toggle="validator">
                         <!-- Name -->
                         <div class="text-left">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Name" required>
+                            <input id="name" name="name" type="text" class="form-control" placeholder="Name" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <!-- email -->
                         <div>
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            <input id="email" name="email" type="email" class="form-control"  placeholder="Email"
+                                required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <!-- Subject -->
                         <div>
                             <label for="msg_subject" class="form-label">Subject</label>
-                            <input type="email" class="form-control" id="msg_subject" placeholder="Subject" required>
+                            <input id="msg_subject" name="subject" type="text" class="form-control" placeholder="Subject" required>
                             <div class="help-block with-errors"></div>
                         </div>
                         <!-- Message -->
                         <div>
                             <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control text-dark" id="message" placeholder="Message" rows="3" required></textarea>
+                            <textarea id="message" name="message"  class="form-control text-dark" placeholder="Message" rows="3"
+                                required></textarea>
                             <div class="help-block with-errors"></div>
                         </div>
                         <!-- Form Submit -->
@@ -84,7 +88,8 @@
                     </form>
                 </div>
         </main>
-        <div th:insert="layout/footer :: footer">...</div>
+
+        <div th:replace="layout/footer :: footer">...</div>
     </div>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/app.js"></script>

@@ -1,5 +1,6 @@
 package co.edu.utp.misiontic.cesardiaz.videotienda.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -8,8 +9,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.CategoryDto;
+import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.ContactDto;
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.MovieDto;
+import co.edu.utp.misiontic.cesardiaz.videotienda.model.entity.Contact;
 import co.edu.utp.misiontic.cesardiaz.videotienda.model.repository.CategoryRepository;
+import co.edu.utp.misiontic.cesardiaz.videotienda.model.repository.ContactRepository;
 import co.edu.utp.misiontic.cesardiaz.videotienda.model.repository.MovieRepository;
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.CatalogService;
 import lombok.AllArgsConstructor;
@@ -20,6 +24,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     private final CategoryRepository categoryRepository;
     private final MovieRepository movieRepository;
+    private final ContactRepository contactRepository;
 
     // S.O.L.I.D
     // SRP
@@ -67,6 +72,21 @@ public class CatalogServiceImpl implements CatalogService {
                 .collect(Collectors.toList());
 
         return categoryMovies;
+    }
+
+    @Override
+    public void saveContact(ContactDto contact) {
+        
+        var entity = new Contact();
+        entity.setDate(new Date());
+        entity.setCountry(contact.getCountry());
+        entity.setName(contact.getName());
+        entity.setEmail(contact.getEmail());
+        entity.setSubject(contact.getSubject());
+        entity.setMessage(contact.getMessage());
+
+        contactRepository.save(entity);
+        
     }
 
 }

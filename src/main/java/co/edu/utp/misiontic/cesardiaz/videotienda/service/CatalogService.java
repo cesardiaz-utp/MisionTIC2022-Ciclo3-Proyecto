@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.CategoryDto;
+import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.ContactDto;
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.MovieDto;
 
 public interface CatalogService {
@@ -13,4 +14,6 @@ public interface CatalogService {
     Optional<CategoryDto> getCategoryById(Integer id);
 
     List<MovieDto> getMoviesByCategoryId(Integer categoryId);
+
+    void saveContact(ContactDto contact);
 }
