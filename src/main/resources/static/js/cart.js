@@ -62,7 +62,7 @@ const loadCartDetails = () => {
             total += totalPrice;
 
             let item = [
-                `<div id="renglon" class="row mb-2">`,
+                `<div id="movie-${key}" class="row item">`,
                 `    <div class="col-4">`,
                 `        <span class="media-heading">${movie.name}</span>`,
                 `    </div>`,
@@ -72,7 +72,7 @@ const loadCartDetails = () => {
                 `    <div class="col text-end"><strong id="price-${key}">${formatter.format(parseFloat(movie.price))}</strong></div>`,
                 `    <div class="col text-end"><strong id="total-${key}">${formatter.format(parseFloat(totalPrice))}</strong></div>`,
                 `    <div class="col text-center">`,
-                `        <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>`,
+                `        <button type="button" class="btn btn-danger" onclick="removeItem('${key}')"><i class="fa-solid fa-trash"></i></button>`,
                 `    </div>`,
                 `    <hr>`,
                 `</div>`
@@ -106,3 +106,21 @@ const parseIntlNumber = (stringNumber, locale) => {
         .replace(new RegExp('\\' + decimalSeparator), '.')
     );
 };
+
+const removeItem = (key) => {
+    let items = localStorage.getItem("cart");
+    items = new Map(Object.entries(JSON.parse(items)));
+    items.delete(key);
+
+    const totalItemValue = parseIntlNumber(document.getElementById("total-" + key).innerText,'en-US');
+    const totalElem = document.getElementById("total");
+
+    totalElem.innerText = formatter.format(parseIntlNumber(totalElem.innerText,'en-US') - totalItemValue);
+
+    console.log(items, JSON.stringify(Object.fromEntries(items)))
+    localStorage.setItem("cart", JSON.stringify(Object.fromEntries(items)));
+    console.log(JSON.stringify(items))
+
+    const movieElm = document.getElementById("movie-"+key);
+    movieElm.remove();
+}
