@@ -39,7 +39,7 @@ const updateCart = () => {
 
 updateCart();
 
-const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+const formatter = new Intl.NumberFormat('en-US');
 
 const loadCartDetails = () => {
     let items = localStorage.getItem("cart");
@@ -63,21 +63,22 @@ const loadCartDetails = () => {
 
             let item = [
                 `<div id="renglon" class="row mb-2">`,
-                `    <div class="col-2">`,
+                `    <div class="col-4">`,
                 `        <span class="media-heading">${movie.name}</span>`,
                 `    </div>`,
                 `    <div class="col">`,
-                `        <input type="number" min="1" class="form-control" id="item-${key}" value="${value}" onchange="updateTotalItem('${key}')" />`,
+                `        <input type="number" min="1" class="form-control text-end" id="item-${key}" value="${value}" onchange="updateTotalItem('${key}')" />`,
                 `    </div>`,
-                `    <div class="col"><strong id="price-${key}">${parseInt(movie.price)}</strong></div>`,
-                `    <div class="col"><strong id="total-${key}">${parseInt(totalPrice)}</strong></div>`,
-                `    <div class="col">`,
+                `    <div class="col text-end"><strong id="price-${key}">${formatter.format(parseFloat(movie.price))}</strong></div>`,
+                `    <div class="col text-end"><strong id="total-${key}">${formatter.format(parseFloat(totalPrice))}</strong></div>`,
+                `    <div class="col text-center">`,
                 `        <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>`,
                 `    </div>`,
+                `    <hr>`,
                 `</div>`
             ].join('\n');
             detail.innerHTML = detail.innerHTML + item;
-            totalElem.innerText = total;
+            totalElem.innerText = formatter.format(total);
         });
 };
 
@@ -88,13 +89,20 @@ const updateTotalItem = (key) => {
     let itemValue = document.getElementById("item-" + key).value;
     let priceValue = document.getElementById("price-" + key).innerText;
 
-    let total = totalElem.innerText - totalItemElem.innerText;
+    let total = parseIntlNumber(totalElem.innerText, 'en-US') - parseIntlNumber(totalItemElem.innerText, 'en-US');
 
-    console.log(totalItemElem.innerText);
+    totalItemElem.innerText = formatter.format(parseIntlNumber(itemValue, 'en-US') * parseIntlNumber(priceValue, 'en-US'));
+    total += parseIntlNumber(totalItemElem.innerText, 'en-US');
 
-    totalItemElem.innerText = parseInt(itemValue) * parseInt(priceValue);
-    total += parseInt(totalItemElem.innerText);
-    console.log(totalItemElem.innerText);
+    totalElem.innerText = formatter.format(total);
+};
 
-    totalElem.innerText = total;
+const parseIntlNumber = (stringNumber, locale) => {
+    var thousandSeparator = Intl.NumberFormat(locale).format(11111).replace(/\p{Number}/gu, '');
+    var decimalSeparator = Intl.NumberFormat(locale).format(1.1).replace(/\p{Number}/gu, '');
+
+    return parseInt(stringNumber
+        .replace(new RegExp('\\' + thousandSeparator, 'g'), '')
+        .replace(new RegExp('\\' + decimalSeparator), '.')
+    );
 };
