@@ -15,5 +15,7 @@ public interface CatalogService {
 
     List<MovieDto> getMoviesByCategoryId(Integer categoryId);
 
+    MovieDto getMovieById(String id);
+
     void saveContact(ContactDto contact);
 }

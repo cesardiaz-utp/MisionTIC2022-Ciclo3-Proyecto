@@ -1,12 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVS Cart</title>
+    <link rel="shortcut icon" href="/images/CVS-Logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/template.css">
 </head>
-<body>
-    <h1>Cart</h1>
+
+<body class="d-flex h-100 text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <div th:replace="layout/header :: header">...</div>
+        <h1>Cart</h1>
+
+        <div class="container">
+            <div class="row bg-primary text-white pb-2">
+                <div class="col-2">Movie</div>
+                <div class="col">Quantity</div>
+                <div class="col">Price</div>
+                <div class="col">Total</div>
+                <div class="col">Actions</div>
+            </div>
+
+            <div id="detail">
+                <div id="renglon" class="row">
+                    <div class="col">
+                        <span class="media-heading">Matrix</span>
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" id="exampleInputEmail1" value="3" />
+                    </div>
+                    <div class="col"><strong>€56.67</strong></div>
+                    <div class="col"><strong>€170.01</strong></div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total -->
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <h3>Total</h3>
+                </div>
+                <div class="col">
+                    <h3><strong id="total">€570.00</strong></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col">
+                    <button type="button" class="btn btn-default col-6"></span> Torna indietro </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-success"><i class="fa-solid fa-cash-register"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="layout/footer :: footer">...</div>
+    </div>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/cart.js"></script>
+    <script>
+        loadCartDetails();
+    </script>
 </body>
+
 </html>

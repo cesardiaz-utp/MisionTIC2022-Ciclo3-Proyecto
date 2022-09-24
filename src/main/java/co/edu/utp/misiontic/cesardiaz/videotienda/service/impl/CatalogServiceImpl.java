@@ -76,7 +76,7 @@ public class CatalogServiceImpl implements CatalogService {
 
     @Override
     public void saveContact(ContactDto contact) {
-        
+
         var entity = new Contact();
         entity.setDate(new Date());
         entity.setCountry(contact.getCountry());
@@ -86,7 +86,22 @@ public class CatalogServiceImpl implements CatalogService {
         entity.setMessage(contact.getMessage());
 
         contactRepository.save(entity);
-        
+
+    }
+
+    @Override
+    public MovieDto getMovieById(String id) {
+        var movieOp = movieRepository.findById(id);
+
+        var movie = movieOp.get();
+        return MovieDto.builder()
+                .id(movie.getCode())
+                .length(movie.getLength())
+                .name(movie.getName())
+                .description(movie.getDescription())
+                .imageUrl(movie.getImageUrl())
+                .price(movie.getValue())
+                .build();
     }
 
 }

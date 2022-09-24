@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.model.entity.Movie;
 
-public interface MovieRepository extends JpaRepository<Movie, Long> {
+public interface MovieRepository extends JpaRepository<Movie, String> {
 
     List<Movie> findAllByCategoryId(Long categoryId);
 
