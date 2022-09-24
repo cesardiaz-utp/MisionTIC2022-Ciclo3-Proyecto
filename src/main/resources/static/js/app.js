@@ -56,3 +56,9 @@ const contadorVisitas = async () => {
 }
 
 contadorVisitas();
+
+const logout = () => {
+    localStorage.removeItem("loggedUser");
+
+    loadUserConfig();
+};
