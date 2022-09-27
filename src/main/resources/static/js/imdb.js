@@ -3,11 +3,11 @@ const baseUrl = "https://imdb-api.com/";
 const lang = "en";
 
 const movieDetail = async (id) => {
-    "https://imdb-api.com/es/API/Title/k_fca6vsn8/1"
-
     const response = await fetch(baseUrl + lang + '/API/Title/' + apiKey + "/" + id);
-    if(response.ok) {
+    if (response.ok) {
         const movieInfo = await response.json();
+
+        movieTrailer(id);
 
         console.log(movieInfo);
 
@@ -17,7 +17,7 @@ const movieDetail = async (id) => {
         document.getElementById("detail-duration").innerText = movieInfo.runtimeStr;
         console.log(movieInfo.image);
         document.getElementById("detail-img").innerHTML = `<img src="${movieInfo.image}" alt="Movie image">`;
-        
+
         let categoriesElement = document.getElementById("detail-categories");
         let genres = movieInfo.genres.split(",");
         let content = [];
@@ -27,10 +27,22 @@ const movieDetail = async (id) => {
         categoriesElement.innerHTML = content.join(" - ");
 
         document.getElementById("detail-description").innerText = movieInfo.plot;
-        
+
 
     } else {
         console.error("La pelicula no existe")
     }
+};
 
+const movieTrailer = async (id) => {
+    const response = await fetch(baseUrl + 'API/Trailer/' + apiKey + "/" + id);
+    if (response.ok) {
+        const movieInfo = await response.json();
+
+        const video = document.getElementById("detail-video");
+        const videoWidth = video.offsetWidth - 10;
+        video.src = movieInfo.linkEmbed + "?width=" + videoWidth;
+    } else {
+        console.error("La pelicula no existe")
+    }
 };

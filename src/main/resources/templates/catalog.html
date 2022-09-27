@@ -172,13 +172,12 @@
                             id="detail-duration">2h 5m</span>
                     </div>
                     <div class="row">
-                        <div id="detail-img" class="col">
+                        <div id="detail-img" class="col-4">
                             <img src="/src/main/resources/static/images/noimage.jpg" alt="Movie image">
                         </div>
-                        <video width="320" height="240" controls class="col">
-                            <source id="detaill-video" src="/videos/movie.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe id="detail-video" class="col-8" src="https://www.imdb.com/video/imdb/vi1186773529/imdb/embed?autoplay=false&width=320"
+                            allowfullscreen="true" mozallowfullscreen="true"
+                            webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
                     </div>
                     <p id="detail-categories">
                         <span class="badge text-bg-dark">Drama</span>
