@@ -8,7 +8,9 @@
     <title>CVS Catalog</title>
     <link rel="shortcut icon" href="/images/CVS-Logo.png" type="image/png">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/template.css">
     <link rel="stylesheet" href="/css/catalog.css">
 </head>
@@ -158,28 +160,30 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="detailLabel">Modal title</h5>
+                    <h5 id="detailLabel" class="modal-title">Movie's Detail</h5>
                     <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body container">
                     <h2 id="detail-title">Movie title</h2>
-                    <p>
-                        <span id="detail-year">2022</span> - <span id="detail-rating">PG-13</span> - <span
-                            id="detail-duration|">2h 5m</span>
-                    </p>
                     <div>
+                        <span id="detail-year">2022</span> - <span id="detail-rating">PG-13</span> - <span
+                            id="detail-duration">2h 5m</span>
+                    </div>
+                    <div class="row">
                         <img src="/src/main/resources/static/images/noimage.jpg" alt="Movie image">
                     </div>
-                    <div>
+                    <div class="row">
                         <video width="320" height="240" controls>
                             <source id="detaill-video" src="/videos/movie.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <div id="detail-categories">
-                        <span class="rounded-pill">Drama</span> - <span class="rounded-pill">Triller</span>
-                    </div>
+                    <p id="detail-categories">
+                        <span class="badge text-bg-dark">Drama</span>
+                        -
+                        <span class="badge text-bg-dark">Triller</span>
+                    </p>
                     <p id="detail-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga quam,
                         cumque rem eum exercitationem doloremque recusandae repudiandae nisi doloribus et quod culpa
                         officia in accusamus odit quae sed alias accusantium.</p>

@@ -18,26 +18,7 @@ const addToCart = (movie) => {
     updateCart();
 }
 
-const updateCart = () => {
-    let items = localStorage.getItem("cart");
-    if (items == undefined) {
-        items = new Map();
-    } else {
-        items = new Map(Object.entries(JSON.parse(items)));
-    }
 
-    const cartBadge = document.getElementById("cart-count");
-    let total = 0;
-    if (items.size > 0) {
-        total = Array.from(items)
-            .map(([key, value]) => value)
-            .reduce((a, b) => a + b);
-    }
-    console.log("total", total);
-    cartBadge.innerText = total;
-}
-
-updateCart();
 
 const formatter = new Intl.NumberFormat('en-US');
 

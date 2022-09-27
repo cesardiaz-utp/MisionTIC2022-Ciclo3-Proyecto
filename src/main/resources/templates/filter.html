@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="filter" action="/filter" method="get">
+        <label>Fecha Inicial</label>
+        <input id="id" type="date" name="init_date"><br>
+        <label>Fecha Final</label>
+        <input id="ed" type="date" name="end_date"><br>
+
+        <label>Escuelas</label><br>
+        <input type="checkbox" name="school" value="s-1" onclick="evento()" checked>Colegio 1 <br>
+        <input type="checkbox" name="school" value="s-2" onclick="evento()">Colegio 2<br>
+        <input type="checkbox" name="school" value="s-3" onclick="evento()">Colegio 3<br>
+        <label>Tipos uniforme</label><br>
+        <input type="checkbox" name="type" value="u-d" onclick="evento()">Diario<br>
+        <input type="checkbox" name="type" value="u-ef" onclick="evento()">Educacion Fisica<br>
+        <button type="submit">Aplicar filtro</button>
+    </form>
+
+    <script>
+        const evento = () => {
+            document.getElementById("filter").submit();
+        }
+
+
+        //const init_date = localStorage.getItem("init_date");
+        const end_date = localStorage.getItem("end_date");
+
+        var date = new Date();
+
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+
+        if (month < 10) month = "0" + month;
+        if (day < 10) day = "0" + day;
+
+        const init_date = year + "-" + month + "-" + day;
+
+        document.getElementById("id").value = init_date
+        document.getElementById("ed").value = end_date
+    </script>
+</body>
+
+</html>

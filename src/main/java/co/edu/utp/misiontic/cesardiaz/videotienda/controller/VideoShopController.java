@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.ContactDto;
+import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.FilterDto;
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.CatalogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 // Spring MVC
 
@@ -98,5 +103,14 @@ public class VideoShopController {
 
         model.addAttribute("info", contactInfo);
         return "thanks";
+    }
+
+    @GetMapping("/filter")
+    public String goToFilter(@ModelAttribute FilterDto filter, Model model) {
+        log.info("Filtrer: {}", filter.toString());
+
+        var movies = catalogService.getMoviesByFilter(filter);
+
+        return "filter";
     }
 }
