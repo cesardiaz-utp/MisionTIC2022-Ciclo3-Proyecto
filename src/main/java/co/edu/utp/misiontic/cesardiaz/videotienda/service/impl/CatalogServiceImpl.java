@@ -111,7 +111,7 @@ public class CatalogServiceImpl implements CatalogService {
         var schools = filter.getSchool() != null;
 
         if(types && schools) {
-            movieRepository.findAllByTypeIdInAndSchoolIdIn(filter.getType(), filter.getSchool());
+            // movieRepository.findAllByTypeIdInAndSchoolIdIn(filter.getType(), filter.getSchool());
             // SELECT * FROM movie WHERE type in ('d') and school in ('1', '2');
         }
 
