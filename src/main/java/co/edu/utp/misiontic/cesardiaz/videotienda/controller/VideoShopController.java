@@ -12,9 +12,6 @@ import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.FilterDto;
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.CatalogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 // Spring MVC
@@ -109,7 +106,7 @@ public class VideoShopController {
     public String goToFilter(@ModelAttribute FilterDto filter, Model model) {
         log.info("Filtrer: {}", filter.toString());
 
-        var movies = catalogService.getMoviesByFilter(filter);
+        // var movies = catalogService.getMoviesByFilter(filter);
 
         return "filter";
     }
